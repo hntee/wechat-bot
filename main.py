@@ -34,13 +34,13 @@ def auto_reply(msg):
     if isinstance(msg.chat, Group) and msg.is_at:
         if (contains(txt, stop_words)):
             tuling_on = False
-            return '哦'
+            return '再见了( ﾟдﾟ)つBye'
         else:
             tuling_on = True
             tuling.do_reply(msg)
     if isinstance(msg.chat, Group) and not tuling_on:
         return
-        
+
     tuling.do_reply(msg)
         
     # 如果是群聊，但没有被 @，则不回复

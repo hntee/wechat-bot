@@ -7,8 +7,8 @@ bot = Bot(console_qr=2,cache_path=True)
 def auto_reply(msg):
     # 回复消息内容和类型
     txt = msg.text
-    print(msg.text)
     print(msg.id, msg.type, msg.raw['MsgType'])
+    print(msg.text)
 
     if ('浦发' in txt):
         total, num = 70, 5

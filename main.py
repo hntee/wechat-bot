@@ -14,7 +14,7 @@ def auto_reply(msg):
     if ('华夏' in txt):
         total, num = 120, 2
         return genRandom(total,num)
-    else:
+    if isinstance(msg.chat, Group) and msg.is_at:
         tuling.do_reply(msg)
     # 如果是群聊，但没有被 @，则不回复
     # if isinstance(msg.chat, Group) and not msg.is_at:

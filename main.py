@@ -2,10 +2,6 @@ from wxpy import *
 from utils import *
 from xml.etree import ElementTree as ETree
 
-tuling_on = True
-
-stop_words = ['shutup','别吵','闭嘴', 'exit']
-start_words = ['/开']
 def contains(txt, words):
     for w in words:
         if w in txt:

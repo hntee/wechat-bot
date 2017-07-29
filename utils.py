@@ -7,6 +7,10 @@ from wxpy import *
 bot = Bot(console_qr=2,cache_path=True)
 
 tuling = Tuling(os.environ['TULING'])
+tuling_on = True
+
+stop_words = ['shutup','别吵','闭嘴', 'exit']
+start_words = ['/开']
 
 def genRandom(total, num, result=None):
   if (result == None):

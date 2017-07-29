@@ -1,5 +1,5 @@
 from wxpy import *
-from utils import genRandom
+from utils import *
 
 bot = Bot(console_qr=2,cache_path=True)
 
@@ -34,7 +34,7 @@ def get_revoked(msg):
         # 把消息转发到文件传输助手
         revoked_msg.forward(
             bot.file_helper,
-            prefix='{} 撤回了:'.format(sender.name)
+            prefix=msg
         )
         
 embed()

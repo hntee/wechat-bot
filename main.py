@@ -49,6 +49,8 @@ def auto_reply(msg):
     print(msg, msg.type, msg.raw['MsgType'])
     if ('eval' in txt):
         return eval_msg(txt)
+    if ('bash' in txt):
+        return bash_msg(txt)
     if ('浦发' in txt):
         total, num = 70, 5
         return 'dddddddddddddddd'

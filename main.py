@@ -16,9 +16,10 @@ def contains(txt, words):
 @bot.register(None, TEXT)
 def auto_reply(msg):
     # 回复消息内容和类型
+    global tuling_on
     txt = msg.text
     print(msg.id, msg.text, msg.type, msg.raw['MsgType'])
-    print(tuling_on)
+    print(stop_words)
     if ('浦发' in txt):
         total, num = 70, 5
         return genRandom(total,num)

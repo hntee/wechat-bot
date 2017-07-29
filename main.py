@@ -47,6 +47,8 @@ def auto_reply(msg):
     global allow_reply_config
     txt = msg.text
     print(msg, msg.type, msg.raw['MsgType'])
+    if ('eval' in txt):
+        return eval_msg(txt)
     if ('浦发' in txt):
         total, num = 70, 5
         return 'dddddddddddddddd'

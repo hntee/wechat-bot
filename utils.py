@@ -2,6 +2,7 @@ import random
 import threading
 import time
 import os
+import subprocess
 from wxpy import *
 
 bot = Bot(console_qr=2,cache_path=True)
@@ -38,3 +39,11 @@ def find(name, content=None):
 # positiveSendingThread = threading.Thread(target=send_online_notification, args=('th',)) 
 # positiveSendingThread.setDaemon(True)
 # positiveSendingThread.start()
+
+def eval_msg(msg):
+    code = msg.split('eval')[1].lstrip()
+    with open('temp_code.py','w') as f:
+        f.write(code)
+    cmd = 'python ./temp_code.py'
+    x = subprocess.check_output(['bash','-c', cmd])
+    return x

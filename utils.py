@@ -19,12 +19,14 @@ def genRandom(total, num, result=None):
 
 
 def send_online_notification(name):
+    global bot
     my_friend = ensure_one(bot.search(name))
     while True:
         my_friend.send('Hello!') # 你想发送的消息
         time.sleep(10) # 一小时后在进行发送
 
 def find(name, content=None):
+    global bot
     if (content == None):
         return ensure_one(bot.search(name))
     return find(name, None).send(content)

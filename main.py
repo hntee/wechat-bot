@@ -7,6 +7,7 @@ bot = Bot(console_qr=2,cache_path=True)
 def auto_reply(msg):
     # 回复消息内容和类型
     txt = msg.text
+    print(txt)
     if ('浦发' in txt):
         total, num = 70, 5
         return genRandom(total,num)

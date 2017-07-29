@@ -30,14 +30,9 @@ def auto_reply(msg):
         total, num = 120, 2
         return genRandom(total,num)
     if isinstance(msg.chat, Group) and msg.is_at:
-        if (contains(txt, stop_words)):
-            allow_reply_config[msg.sender] = False
-            return farewell
-        else:
-            allow_reply_config[msg.sender] = True
-            tuling.do_reply(msg)
-            return 
-    if isinstance(msg.chat, Group) and not allow_reply_config[msg.sender]:
+        tuling.do_reply(msg)
+        return 
+    if isinstance(msg.chat, Group) and not msg.is_at:
         return
 
     tuling.do_reply(msg)

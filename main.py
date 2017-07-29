@@ -41,7 +41,25 @@ def auto_reply(msg):
     # if isinstance(msg.chat, Group) and not msg.is_at:
     #     return
     # else:
+@bot.register(find('th'), TEXT)
+def auto_reply(msg):
+    # 回复消息内容和类型
+    global allow_reply_config
+    txt = msg.text
+    print(msg, msg.type, msg.raw['MsgType'])
+    if ('浦发' in txt):
+        total, num = 70, 5
+        return 'dddddddddddddddd'
+    if ('华夏' in txt):
+        total, num = 120, 2
+        return genRandom(total,num)
+    if isinstance(msg.chat, Group) and msg.is_at:
+        tuling.do_reply(msg)
+        return 
+    if isinstance(msg.chat, Group) and not msg.is_at:
+        return
 
+    tuling.do_reply(msg)
 
 @bot.register(msg_types=NOTE)
 def note_handler(msg):

@@ -5,9 +5,11 @@ import collections
 
 tuling_on = True
 
-stop_words = ['shutup','别吵','闭嘴', 'exit', '886']
-start_words = ['/开']
-stop_config = collections.defaultdict(bool)
+stop_words = ['shutup','别吵','闭嘴', 'exit', '886', '88']
+start_words = ['出来吧']
+allow_reply_config = collections.defaultdict(bool)
+
+farewell = "886"
 
 def contains(txt, words):
     for w in words:
@@ -18,7 +20,7 @@ def contains(txt, words):
 @bot.register(None, TEXT)
 def auto_reply(msg):
     # 回复消息内容和类型
-    global stop_config
+    global allow_reply_config
     txt = msg.text
     print(msg.id, msg.text, msg.type, msg.raw['MsgType'])
     if ('浦发' in txt):
@@ -27,21 +29,15 @@ def auto_reply(msg):
     if ('华夏' in txt):
         total, num = 120, 2
         return genRandom(total,num)
-    if (contains(txt, stop_words)):
-        stop_config[msg.sender] = False
-        return '哦'
-    if (contains(txt, start_words)):
-        stop_config[msg.sender] = True
-        return '窝来了'
     if isinstance(msg.chat, Group) and msg.is_at:
         if (contains(txt, stop_words)):
-            stop_config[msg.sender] = False
-            return '886'
+            allow_reply_config[msg.sender] = False
+            return farewell
         else:
-            stop_config[msg.sender] = True
+            allow_reply_config[msg.sender] = True
             tuling.do_reply(msg)
             return 
-    if isinstance(msg.chat, Group) and not stop_config[msg.sender]:
+    if isinstance(msg.chat, Group) and not allow_reply_config[msg.sender]:
         return
 
     tuling.do_reply(msg)

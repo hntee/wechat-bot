@@ -2,8 +2,6 @@ from wxpy import *
 from utils import *
 from xml.etree import ElementTree as ETree
 
-bot = Bot(console_qr=2,cache_path=True)
-
 @bot.register(None, TEXT)
 def auto_reply(msg):
     # 回复消息内容和类型

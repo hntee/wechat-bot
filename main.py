@@ -1,12 +1,13 @@
 from wxpy import *
 from utils import *
 from xml.etree import ElementTree as ETree
+import collections
 
 tuling_on = True
 
 stop_words = ['shutup','别吵','闭嘴', 'exit', '886']
 start_words = ['/开']
-stop_config = {}
+stop_config = collections.defaultdict(bool)
 
 def contains(txt, words):
     for w in words:

@@ -1,6 +1,7 @@
 import random
 import threading
 import time
+from wxpy import *
 
 def genRandom(total, num, result=None):
   if (result == None):

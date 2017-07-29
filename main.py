@@ -39,7 +39,8 @@ def auto_reply(msg):
             return '886'
         else:
             stop_config[msg.sender] = True
-            return tuling.do_reply(msg)
+            tuling.do_reply(msg)
+            return 
     if isinstance(msg.chat, Group) and not stop_config[msg.sender]:
         return
 

@@ -46,10 +46,10 @@ def eval_msg(msg):
         f.write(code)
     cmd = 'python ./temp_code.py'
     x = subprocess.check_output(['bash','-c', cmd])
-    return x.lstrip().rstrip()
+    return x.lstrip().rstrip().decode('UTF-8')
 
 def bash_msg(msg):
     code = msg.split('bash')[1].lstrip()
     x = subprocess.check_output(['bash','-c', code])
-    return x.lstrip().rstrip()
+    return x.lstrip().rstrip().decode('UTF-8')
     

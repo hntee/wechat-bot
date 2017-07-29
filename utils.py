@@ -23,6 +23,10 @@ def send_online_notification(name):
         my_friend.send('Hello!') # 你想发送的消息
         time.sleep(10) # 一小时后在进行发送
 
+def find(name, content=None):
+    if (content == None):
+        return ensure_one(bot.search(name))
+    return find(name, None).send(content)
 # positiveSendingThread = threading.Thread(target=send_online_notification, args=('th',)) 
 # positiveSendingThread.setDaemon(True)
 # positiveSendingThread.start()

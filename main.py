@@ -14,6 +14,8 @@ def auto_reply(msg):
     if ('华夏' in txt):
         total, num = 120, 2
         return genRandom(total,num)
+    else:
+        tuling.do_reply(msg)
     # 如果是群聊，但没有被 @，则不回复
     # if isinstance(msg.chat, Group) and not msg.is_at:
     #     return
@@ -25,6 +27,10 @@ def note_handler(msg):
     msg_type = msg.raw['MsgType']
     forwarder = find('qwer')
     print(msg.id, msg.text, msg.type, msg_type)
+
+    # 10000 红包
+    # 10002 撤回
+    # 49 转账
 
     if msg_type == 10000: # 红包
         forwarder.send(msg)

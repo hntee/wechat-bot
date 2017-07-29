@@ -1,10 +1,12 @@
 import random
 import threading
 import time
+import os
 from wxpy import *
 
 bot = Bot(console_qr=2,cache_path=True)
 
+tuling = Tuling(os.environ['TULING'])
 
 def genRandom(total, num, result=None):
   if (result == None):

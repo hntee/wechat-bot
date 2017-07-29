@@ -1,3 +1,7 @@
+import random
+import threading
+import time
+
 def genRandom(total, num, result=None):
   if (result == None):
     return genRandom(total*100, num, [])

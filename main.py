@@ -1,8 +1,5 @@
 from wxpy import *
 from utils import genRandom
-import random
-import threading
-import time
 
 bot = Bot(console_qr=2,cache_path=True)
 

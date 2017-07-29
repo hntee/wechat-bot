@@ -21,8 +21,7 @@ def contains(txt, words):
 def auto_reply(msg):
     # 回复消息内容和类型
     global allow_reply_config
-    txt = msg.text
-    print(msg.id, msg.text, msg.type, msg.raw['MsgType'])
+    print(msg, msg.type, msg.raw['MsgType'])
     if ('浦发' in txt):
         total, num = 70, 5
         return genRandom(total,num)

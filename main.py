@@ -2,6 +2,16 @@ from wxpy import *
 from utils import *
 from xml.etree import ElementTree as ETree
 
+tuling_on = True
+
+stop_words = ['shutup','别吵','闭嘴', 'exit']
+start_words = ['/开']
+def contains(txt, words):
+    for w in words:
+        if w in txt:
+            return True
+    return False
+
 @bot.register(None, TEXT)
 def auto_reply(msg):
     # 回复消息内容和类型
@@ -14,8 +24,16 @@ def auto_reply(msg):
     if ('华夏' in txt):
         total, num = 120, 2
         return genRandom(total,num)
-    if isinstance(msg.chat, Group) and msg.is_at:
+    if (contains(txt, stop_words)):
+        tuling_on = False
+        return '哦'
+    if (contains(txt, start_words)):
+        tuling_on = True
+        return '窝来了'
+    
+    if (tuling_on):
         tuling.do_reply(msg)
+        
     # 如果是群聊，但没有被 @，则不回复
     # if isinstance(msg.chat, Group) and not msg.is_at:
     #     return

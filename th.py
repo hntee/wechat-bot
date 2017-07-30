@@ -3,17 +3,15 @@ from utils import *
 from xml.etree import ElementTree as ETree
 import collections
 
-# xh = find('六个小号')
-
 def forward(msg, receiver):
     msg_time = msg.create_time.strftime("%m-%d %H:%M:%S ")
     receiver.send(msg_time + str(msg))
 
-# @bot.register(find('坚决跟党走'))
-# def forward_chouma_message(msg):
-#     print(msg.id, msg.text, msg.type)
-#     receiver = find('假筹码群')
-#     forward(msg, receiver)
+@bot.register(find('坚决跟党走'))
+def forward_chouma_message(msg):
+    print(msg.id, msg.text, msg.type)
+    receiver = find('假筹码群')
+    forward(msg, receiver)
 
 @bot.register(find('六个小号'))
 def forward_chouma_message(msg):

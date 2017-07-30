@@ -7,26 +7,26 @@ def forward(msg, receiver):
     msg_time = msg.create_time.strftime("%m-%d %H:%M:%S ")
     receiver.send(msg_time + str(msg))
 
-@bot.register(find('坚决跟党走'))
-def forward_chouma_message(msg):
-    msg_time = msg.create_time.strftime("%m-%d %H:%M:%S")
-    sender = msg.member.name
-    time_and_sender = '{} {}'.format(msg_time, msg.member.name)
-    print(msg_time, sender, msg.text, msg.type)
-    receiver = find('假筹码群')
-    msg.forward(receiver, prefix=time_and_sender)
+# @bot.register(find('坚决跟党走'))
+# def forward_chouma_message(msg):
+#     msg_time = msg.create_time.strftime("%m-%d %H:%M:%S")
+#     sender = msg.member.name
+#     time_and_sender = '{} {}'.format(msg_time, msg.member.name)
+#     # print(msg_time, sender, msg.text, msg.type)
+#     receiver = find('假筹码群')
+#     msg.forward(receiver, prefix=time_and_sender)
 
-@bot.register(find('六个小号'))
-def forward_chouma_message(msg):
-    print(msg.id, msg.text, msg.type)
-    receiver = find('另外一个心态')
-    forward(msg, receiver)
+# @bot.register(find('六个小号'))
+# def forward_chouma_message(msg):
+#     # print(msg.id, msg.text, msg.type)
+#     receiver = find('另外一个心态')
+#     forward(msg, receiver)
 
 @bot.register(msg_types=NOTE)
 def note_handler(msg):
     msg_type = msg.raw['MsgType']
     forwarder = find('qwer')
-    print(msg.id, msg.text, msg.type, msg_type)
+    # print(msg.id, msg.text, msg.type, msg_type)
 
     # 10000 红包
     # 10002 撤回

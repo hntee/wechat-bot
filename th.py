@@ -11,7 +11,7 @@ def forward(msg, receiver):
 def forward_chouma_message(msg):
     msg_time = msg.create_time.strftime("%m-%d %H:%M:%S")
     sender = msg.member.name
-    time_and_sender = '{} {}\n'.format(msg_time, msg.member.name)
+    time_and_sender = '{} {}'.format(msg_time, msg.member.name)
     print(msg_time, sender, msg.text, msg.type)
     receiver = find('假筹码群')
     msg.forward(receiver, prefix=time_and_sender)

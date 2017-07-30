@@ -9,9 +9,6 @@ bot = Bot(console_qr=2,cache_path=True)
 
 tuling = Tuling(os.environ['TULING'])
 
-xh = find('六个小号')
-
-
 def genRandom(total, num, result=None):
   if (result == None):
     return genRandom(total*100, num, [])
@@ -55,3 +52,6 @@ def bash_msg(msg):
     code = msg.split('bash')[1].lstrip()
     x = subprocess.check_output(['bash','-c', code])
     return x.lstrip().rstrip().decode('UTF-8')
+
+
+

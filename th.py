@@ -3,6 +3,9 @@ from utils import *
 from xml.etree import ElementTree as ETree
 import collections
 
+xh = find('六个小号')
+
+
 def forward(msg, receiver):
     msg_time = msg.create_time.strftime("%m-%d %H:%M:%S ")
     receiver.send(msg_time + str(msg))

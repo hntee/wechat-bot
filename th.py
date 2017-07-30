@@ -9,13 +9,13 @@ def forward(msg, receiver):
 
 # @bot.register(find('坚决跟党走'))
 # def forward_chouma_message(msg):
-#     print(msg.id, msg.text, msg.type, msg_type)
+#     print(msg.id, msg.text, msg.type)
 #     receiver = find('假筹码群')
 #     forward(msg, receiver)
 
-@bot.register(find('银行亲戚'))
+@bot.register(find('qwer'))
 def forward_chouma_message(msg):
-    print(msg.id, msg.text, msg.type, msg_type)
+    print(msg.id, msg.text, msg.type)
     receiver = find('另外一个心态')
     forward(msg, receiver)
 

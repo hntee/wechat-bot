@@ -13,7 +13,7 @@ def forward(msg, receiver):
 #     receiver = find('假筹码群')
 #     forward(msg, receiver)
 
-@bot.register(find('六个小号'))
+@bot.register(xh)
 def forward_chouma_message(msg):
     print(msg.id, msg.text, msg.type)
     receiver = find('另外一个心态')

@@ -7,13 +7,15 @@ def forward(msg, receiver):
     msg_time = msg.create_time.strftime("%m-%d %H:%M:%S ")
     receiver.send(msg_time + str(msg))
 
-@bot.register(find('坚决跟党走'))
-def forward_chouma_message(msg):
-    receiver = find('假筹码群')
-    forward(msg, receiver)
+# @bot.register(find('坚决跟党走'))
+# def forward_chouma_message(msg):
+#     print(msg.id, msg.text, msg.type, msg_type)
+#     receiver = find('假筹码群')
+#     forward(msg, receiver)
 
 @bot.register(find('银行亲戚'))
 def forward_chouma_message(msg):
+    print(msg.id, msg.text, msg.type, msg_type)
     receiver = find('另外一个心态')
     forward(msg, receiver)
 

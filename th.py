@@ -9,9 +9,9 @@ def forward(msg, receiver):
 
 @bot.register(find('坚决跟党走'))
 def forward_chouma_message(msg):
-    print(msg.id, msg.member, msg.text, msg.type)
+    print(msg.id, msg.member.name, msg.text, msg.type)
     receiver = find('假筹码群')
-    msg.forward(receiver, prefix=msg.create_time.strftime("%m-%d %H:%M:%S "))
+    msg.forward(receiver, prefix=msg.member.name+msg.create_time.strftime(" %m-%d %H:%M:%S "))
 
 @bot.register(find('六个小号'))
 def forward_chouma_message(msg):

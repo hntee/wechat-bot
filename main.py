@@ -23,10 +23,12 @@ def auto_reply(msg):
     global allow_reply_config
     txt = msg.text
     print(msg, msg.type, msg.raw['MsgType'])
-    if ('浦发' in txt):
+    if ('.calc' in txt):
+        return calc_msg(txt)
+    if ('.浦发' in txt):
         total, num = 70, 5
         return genRandom(total,num)
-    if ('华夏' in txt):
+    if ('.华夏' in txt):
         total, num = 120, 2
         return genRandom(total,num)
     if isinstance(msg.chat, Group) and msg.is_at:
@@ -47,14 +49,16 @@ def auto_reply(msg):
     global allow_reply_config
     txt = msg.text
     print(msg, msg.type, msg.raw['MsgType'])
-    if ('eval' in txt):
+    if ('.eval' in txt):
         return eval_msg(txt)
-    if ('bash' in txt):
+    if ('.bash' in txt):
         return bash_msg(txt)
-    if ('浦发' in txt):
+    if ('.calc' in txt):
+        return calc_msg(txt)
+    if ('.浦发' in txt):
         total, num = 70, 5
-        return 'dddddddddddddddd'
-    if ('华夏' in txt):
+        return genRandom(total,num)
+    if ('.华夏' in txt):
         total, num = 120, 2
         return genRandom(total,num)
     if isinstance(msg.chat, Group) and msg.is_at:

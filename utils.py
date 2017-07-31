@@ -53,5 +53,9 @@ def bash_msg(msg):
     x = subprocess.check_output(['bash','-c', code])
     return x.lstrip().rstrip().decode('UTF-8')
 
+def calc_msg(msg):
+    code = msg.split('calc')[1].lstrip()
+    return eval("print({})".format(code))
+
 
 

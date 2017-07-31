@@ -68,7 +68,7 @@ def note_handler(msg):
     msg_time = msg.create_time.strftime("%m-%d %H:%M:%S ")
     red_packet_group = find('x红包x')
     revoke_group = find("x撤回x")
-    # print(msg.id, msg.text, msg.type, msg_type)
+    print(msg.id, msg.text, msg.type, msg_type)
 
     # 10000 红包
     # 10002 撤回

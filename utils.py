@@ -55,7 +55,7 @@ def bash_msg(msg):
 
 def calc_msg(msg):
     code = msg.split('calc')[1].lstrip()
-    return eval("print({})".format(code))
+    return eval(code)
 
 
 

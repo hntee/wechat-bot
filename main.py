@@ -22,8 +22,12 @@ def auto_reply(msg):
     # 回复消息内容和类型
     global allow_reply_config
     txt = msg.text
+    revoke_group = find("x红包x")
     print(msg, msg.type, msg.raw['MsgType'])
-    if ('.calc' in txt):
+    if ('收到红包' in txt):
+        revoke_group.send(msg)
+        return
+    if ('calc' in txt):
         return calc_msg(txt)
     if ('.浦发' in txt):
         total, num = 70, 5
@@ -49,49 +53,35 @@ def auto_reply(msg):
     global allow_reply_config
     txt = msg.text
     print(msg, msg.type, msg.raw['MsgType'])
-    if ('.eval' in txt):
+    if ('eval' in txt):
         return eval_msg(txt)
-    if ('.bash' in txt):
+    elif ('bash' in txt):
         return bash_msg(txt)
-    if ('.calc' in txt):
+    elif ('calc' in txt):
         return calc_msg(txt)
-    if ('.浦发' in txt):
-        total, num = 70, 5
-        return genRandom(total,num)
-    if ('.华夏' in txt):
-        total, num = 120, 2
-        return genRandom(total,num)
-    if isinstance(msg.chat, Group) and msg.is_at:
-        tuling.do_reply(msg)
-        return 
-    if isinstance(msg.chat, Group) and not msg.is_at:
-        return
 
     tuling.do_reply(msg)
 
 @bot.register(msg_types=NOTE)
 def note_handler(msg):
     msg_type = msg.raw['MsgType']
-    forwarder = find('qwer')
-    print(msg.id, msg.text, msg.type, msg_type)
+    msg_time = msg.create_time.strftime("%m-%d %H:%M:%S ")
+    red_packet_group = find('x红包x')
+    revoke_group = find("x撤回x")
+    # print(msg.id, msg.text, msg.type, msg_type)
 
     # 10000 红包
     # 10002 撤回
     # 49 转账
 
-    if msg_type == 10000: # 红包
-        forwarder.send(msg)
-    else:
-        # 检查 NOTE 中是否有撤回信息
+    if ('收到红包' in msg.text) or ('转账' in msg.text)  : # 红包
+        forward(msg, red_packet_group)
+        sendmail(str(msg))
+    elif ('撤回' in msg.text): # 撤回
         revoked = ETree.fromstring(msg.raw['Content']).find('revokemsg')
-        if revoked:
-            # 根据找到的撤回消息 id 找到 bot.messages 中的原消息
-            revoked_msg = bot.messages.search(id=int(revoked.find('msgid').text))[0]
-            # 原发送者 (群聊时为群员)
-            sender = msg.member or msg.sender
-            # 把消息转发到文件传输助手
-            revoked_msg.forward(
-                forwarder,
+        revoked_msg = bot.messages.search(id=int(revoked.find('msgid').text))[0]
+        revoked_msg.forward(
+                revoke_group,
                 prefix=msg
             )
             

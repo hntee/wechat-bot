@@ -1,6 +1,7 @@
 from wxpy import *
 from utils import *
 from xml.etree import ElementTree as ETree
+from sendmail import sendmail
 import collections
 
 tuling_on = True
@@ -66,8 +67,8 @@ def auto_reply(msg):
 def note_handler(msg):
     msg_type = msg.raw['MsgType']
     msg_time = msg.create_time.strftime("%m-%d %H:%M:%S ")
-    red_packet_group = find('x红包x')
-    revoke_group = find("x撤回x")
+    red_packet_group = find(u'x红包x')
+    revoke_group = find(u"x撤回x")
     print(msg.id, msg.text, msg.type, msg_type)
 
     # 10000 红包

@@ -25,7 +25,8 @@ def forward(msg, receiver):
 @bot.register(msg_types=NOTE)
 def note_handler(msg):
     msg_type = msg.raw['MsgType']
-    forwarder = find('qwer')
+    msg_time = msg.create_time.strftime("%m-%d %H:%M:%S ")
+    receiver = find('qwer')
     # print(msg.id, msg.text, msg.type, msg_type)
 
     # 10000 红包
@@ -33,7 +34,7 @@ def note_handler(msg):
     # 49 转账
 
     if ('收到红包' in msg.text) or ('转账' in msg.text)  : # 红包
-        forwarder.send(msg_time, msg)
+        forward(msg, receiver)
     else:
         # 检查 NOTE 中是否有撤回信息
         revoked = ETree.fromstring(msg.raw['Content']).find('revokemsg')

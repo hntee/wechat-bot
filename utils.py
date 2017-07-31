@@ -58,4 +58,3 @@ def calc_msg(msg):
     return eval(code)
 
 
-

@@ -1,7 +1,10 @@
 from wxpy import *
 from utils import *
 from xml.etree import ElementTree as ETree
+from email import Mail
 import collections
+
+mail = Mail()
 
 def forward(msg, receiver):
     msg_time = msg.create_time.strftime("%m-%d %H:%M:%S ")
@@ -35,6 +38,7 @@ def note_handler(msg):
 
     if ('收到红包' in msg.text) or ('转账' in msg.text)  : # 红包
         forward(msg, receiver)
+        mail.send(str(msg))
     else:
         # 检查 NOTE 中是否有撤回信息
         revoked = ETree.fromstring(msg.raw['Content']).find('revokemsg')

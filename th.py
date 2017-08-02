@@ -6,7 +6,7 @@ import collections
 
 def forward(msg, receiver):
     msg_time = msg.create_time.strftime("%m-%d %H:%M:%S ")
-    receiver.send(msg_time + str(msg))
+    receiver.send(str(msg))
 
 
 @bot.register(msg_types=NOTE)
@@ -21,7 +21,7 @@ def note_handler(msg):
     # 10002 撤回
     # 49 转账
 
-    if ('收到红包' in msg.text) or ('转账' in msg.text)  : # 红包
+    if ('收到红包' in msg.text) : # 红包
         forward(msg, red_packet_group)
         sendmail(str(msg))
     elif ('撤回' in msg.text): # 撤回

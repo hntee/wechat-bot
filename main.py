@@ -2,6 +2,7 @@ from wxpy import *
 from utils import *
 from xml.etree import ElementTree as ETree
 from sendmail import sendmail
+from th import forward
 import collections
 
 tuling_on = True
@@ -25,8 +26,9 @@ def auto_reply(msg):
     txt = msg.text
     revoke_group = find("x红包x")
     print(msg, msg.type, msg.raw['MsgType'])
-    if ('收到红包' in txt):
-        revoke_group.send(msg)
+
+    if ('收到红包' in msg.text) : # 红包
+        forward(msg, red_packet_group)
         return
     if ('calc' in txt):
         return calc_msg(txt)

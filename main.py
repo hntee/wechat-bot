@@ -26,6 +26,7 @@ def auto_reply(msg):
     txt = msg.text
     print(msg, msg.type, msg.raw['MsgType'])
     red_packet_group = find(u"x红包x")
+    print("red")
 
     if ('收到红包' in txt) : # 红包
         forward(msg, red_packet_group)

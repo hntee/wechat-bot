@@ -6,6 +6,7 @@ import collections
 
 def forward(msg, receiver):
     msg_time = msg.create_time.strftime("%m-%d %H:%M:%S ")
+    print("forwarded:",receiver,str(msg))
     receiver.send(str(msg))
 
 

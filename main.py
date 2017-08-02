@@ -27,7 +27,7 @@ def auto_reply(msg):
     red_packet_group = find(u"x红包x")
     print(msg, msg.type, msg.raw['MsgType'])
 
-    if ('收到红包' in msg.text) : # 红包
+    if ('收到红包' in txt) : # 红包
         forward(msg, red_packet_group)
         return
     if ('calc' in txt):

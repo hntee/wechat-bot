@@ -24,7 +24,7 @@ def auto_reply(msg):
     # 回复消息内容和类型
     global allow_reply_config
     txt = msg.text
-    revoke_group = find("x红包x")
+    red_packet_group = find(u"x红包x")
     print(msg, msg.type, msg.raw['MsgType'])
 
     if ('收到红包' in msg.text) : # 红包

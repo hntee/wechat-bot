@@ -8,6 +8,7 @@ import collections
 tuling_on = True
 
 stop_words = ['shutup','别吵','闭嘴', 'exit', '886', '88']
+supervise_words = ['']
 start_words = ['出来吧']
 allow_reply_config = collections.defaultdict(bool)
 
@@ -22,13 +23,15 @@ def contains(txt, words):
 @bot.register(None, TEXT)
 def auto_reply(msg):
     # 回复消息内容和类型
-    global allow_reply_config
     txt = msg.text
     print(msg, msg.type, msg.raw['MsgType'])
     red_packet_group = find(u"x红包x")
     print("red")
 
     if ('收到红包' in txt) : # 红包
+        forward(msg, red_packet_group)
+        return
+    if ('水' in txt and '无' not in txt) : # 红包
         forward(msg, red_packet_group)
         return
     if ('calc' in txt):
@@ -54,7 +57,6 @@ def auto_reply(msg):
 @bot.register(find('th'), TEXT)
 def auto_reply(msg):
     # 回复消息内容和类型
-    global allow_reply_config
     txt = msg.text
     print(msg, msg.type, msg.raw['MsgType'])
     if ('eval' in txt):
@@ -78,7 +80,7 @@ def note_handler(msg):
     # 10002 撤回
     # 49 转账
 
-    if ('收到红包' in msg.text) or ('转账' in msg.text)  : # 红包
+    if ('收到红包' in msg.text)  : # 红包
         forward(msg, red_packet_group)
         sendmail(str(msg))
     elif ('撤回' in msg.text): # 撤回

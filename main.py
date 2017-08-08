@@ -31,7 +31,7 @@ def auto_reply(msg):
     if ('收到红包' in txt) : # 红包
         forward(msg, red_packet_group)
         return
-    if ('水' in txt and '无' not in txt) : # 红包
+    if ('水' in txt and '无' not in txt and '没' not in txt) : # 红包
         forward(msg, red_packet_group)
         return
     if ('calc' in txt):
